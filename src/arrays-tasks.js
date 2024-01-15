@@ -278,8 +278,14 @@ function distinct(arr) {
  *    createNDimensionalArray(4, 2) => [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]], [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]]
  *    createNDimensionalArray(1, 1) => [0]
  */
-function createNDimensionalArray(/* n, size */) {
-  throw new Error('Not implemented');
+function createNDimensionalArray(n, size, depht = 1) {
+  function buildArr(curr) {
+    if (n === curr) {
+      return 0;
+    }
+    return new Array(size).fill(buildArr(1 + curr));
+  }
+  return new Array(size).fill(buildArr(depht));
 }
 
 /**
