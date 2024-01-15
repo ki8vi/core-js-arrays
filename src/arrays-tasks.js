@@ -44,8 +44,12 @@ function getIntervalArray(start, end) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  const maxLen = [arr1.length, arr2.length].sort((a, b) => b - a)[0];
+  const cloneArr1 = [...arr1, Array(maxLen - arr1.length).fill(0)].flat();
+  const cloneArr2 = [...arr2, Array(maxLen - arr2.length).fill(0)].flat();
+  const outputArr = cloneArr2.map((el, i) => el + cloneArr1[i]);
+  return outputArr;
 }
 
 /**
